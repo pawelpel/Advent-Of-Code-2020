@@ -1,6 +1,6 @@
 """https://adventofcode.com/2020/day/1"""
 
-with open('inputs/day1.txt', 'r') as input_file:
+with open("inputs/day1.txt", "r") as input_file:
     expense_report = sorted(map(int, input_file.readlines()))
 
 

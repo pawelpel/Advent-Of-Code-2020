@@ -1,7 +1,7 @@
 """https://adventofcode.com/2020/day/9"""
 from itertools import combinations
 
-with open('inputs/day9.txt', 'r') as input_file:
+with open("inputs/day9.txt", "r") as input_file:
     numbers = list(map(int, input_file.readlines()))
 
 
@@ -13,7 +13,7 @@ def puzzle_1():
     preamble = 25
     for i in range(preamble, len(numbers)):
         current_number = numbers[i]
-        previous_numbers = sorted(numbers[i-preamble:i])
+        previous_numbers = sorted(numbers[i - preamble : i])
         if not sums_up(previous_numbers, current_number):
             return current_number
 
@@ -37,4 +37,3 @@ def puzzle_2():
 
 # print(puzzle_1())
 print(puzzle_2())
-

@@ -3,8 +3,8 @@ from dataclasses import dataclass
 from functools import reduce
 from operator import mul
 
-with open('inputs/day3.txt', 'r') as input_file:
-    given_map = [list(x.replace('\n', '')) for x in input_file.readlines()]
+with open("inputs/day3.txt", "r") as input_file:
+    given_map = [list(x.replace("\n", "")) for x in input_file.readlines()]
 
 
 def puzzle_1(right=None, down=None):

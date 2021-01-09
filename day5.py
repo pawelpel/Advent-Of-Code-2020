@@ -1,17 +1,17 @@
 """https://adventofcode.com/2020/day/5"""
 
-with open('inputs/day5.txt', 'r') as input_file:
-    boarding_passes = [x.replace('\n', '') for x in input_file.readlines()]
+with open("inputs/day5.txt", "r") as input_file:
+    boarding_passes = [x.replace("\n", "") for x in input_file.readlines()]
 
 
 def puzzle_1():
     max_seat_id = 0
 
     def get_half(x: list, half_sign):
-        l = int(len(x)/2)
-        if half_sign in ('F', 'L'):
-            return x[:l]
-        return x[l:]
+        length = int(len(x) / 2)
+        if half_sign in ("F", "L"):
+            return x[:length]
+        return x[length:]
 
     for boarding_pass in boarding_passes:
 
@@ -32,12 +32,11 @@ def puzzle_1():
 
 
 def puzzle_2():
-
     def get_half(x: list, half_sign):
-        l = int(len(x)/2)
-        if half_sign in ('F', 'L'):
-            return x[:l]
-        return x[l:]
+        length = int(len(x) / 2)
+        if half_sign in ("F", "L"):
+            return x[:length]
+        return x[length:]
 
     seats = []
 
@@ -60,6 +59,7 @@ def puzzle_2():
     for i in range(seats[0], seats.pop()):
         if i not in seats:
             return i
+
 
 # print(puzzle_1())
 print(puzzle_2())

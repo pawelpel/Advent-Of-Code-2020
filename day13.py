@@ -1,15 +1,18 @@
 """https://adventofcode.com/2020/day/13"""
 import math
 
-with open('inputs/day13.txt', 'r') as input_file:
+with open("inputs/day13.txt", "r") as input_file:
     earliest_depart = int(input_file.readline().strip())
-    bus_ids = list(map(
-        lambda x: int(x) if x != 'x' else x, input_file.readline().strip().split(',')
-    ))
+    bus_ids = list(
+        map(
+            lambda x: int(x) if x != "x" else x,
+            input_file.readline().strip().split(","),
+        )
+    )
 
 
 def puzzle_1():
-    active_bus_ids = list(filter(lambda x: x != 'x', bus_ids))
+    active_bus_ids = list(filter(lambda x: x != "x", bus_ids))
 
     waiting_till = earliest_depart
     while True:
@@ -20,7 +23,9 @@ def puzzle_1():
 
 
 def puzzle_2():
-    active_bus_ids_and_pos = [(bus, pos) for pos, bus in enumerate(bus_ids) if bus != 'x']
+    active_bus_ids_and_pos = [
+        (bus, pos) for pos, bus in enumerate(bus_ids) if bus != "x"
+    ]
     first_bus_id = active_bus_ids_and_pos[0][0]
 
     active_bus_ids_and_pos = set(active_bus_ids_and_pos)

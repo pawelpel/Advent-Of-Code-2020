@@ -1,11 +1,10 @@
 """https://adventofcode.com/2020/day/8"""
 
-with open('inputs/day8.txt', 'r') as input_file:
+with open("inputs/day8.txt", "r") as input_file:
     raw_instructions = input_file.readlines()
 
 
 class SubscriptableCyclingList(list):
-
     def __getitem__(self, item):
         if item > len(self) - 1:
             item = item % len(self)
@@ -14,7 +13,7 @@ class SubscriptableCyclingList(list):
 
 instructions = SubscriptableCyclingList()
 for raw_ins in raw_instructions:
-    ins_name, arg = raw_ins.replace('\n', '').split()
+    ins_name, arg = raw_ins.replace("\n", "").split()
     arg = int(arg)
     instructions.append((ins_name, arg))
 
@@ -26,22 +25,22 @@ def puzzle_1():
         nonlocal accumulator
         accumulator += arg
         return idx + 1
-    
+
     def jumps(arg, idx):
         return idx + arg
-    
+
     def nop(_, idx):
         return idx + 1
-    
+
     mapping = {
-        'acc': acc,
-        'jmp': jumps,
-        'nop': nop,
+        "acc": acc,
+        "jmp": jumps,
+        "nop": nop,
     }
-    
+
     visited_set = set()
     visited_list = list()
-    
+
     index = 0
     while len(visited_set) == len(visited_list):
         visited_list.append(index)
@@ -54,7 +53,6 @@ def puzzle_1():
 
 
 def puzzle_2():
-
     def acc(arg, idx):
         nonlocal accumulator
         accumulator += arg
@@ -67,13 +65,13 @@ def puzzle_2():
         return idx + 1
 
     mapping = {
-        'acc': acc,
-        'jmp': jumps,
-        'nop': nop,
+        "acc": acc,
+        "jmp": jumps,
+        "nop": nop,
     }
 
     jmp_or_nop_instruction_indexes = [
-        i for i, x in enumerate(instructions) if x[0] != 'acc'
+        i for i, x in enumerate(instructions) if x[0] != "acc"
     ]
 
     for to_flip in jmp_or_nop_instruction_indexes:
@@ -90,7 +88,7 @@ def puzzle_2():
             instruction, argument = instructions[index]
 
             if index == to_flip:
-                instruction = 'jmp' if instruction == 'nop' else 'nop'
+                instruction = "jmp" if instruction == "nop" else "nop"
 
             index = mapping[instruction](argument, index)
 
